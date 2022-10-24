@@ -21,8 +21,6 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   Repositry(ApiServices());
   setup();
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //     statusBarColor: Colors.white, statusBarBrightness: Brightness.dark));
   runApp(MyApp(
     appRouter: AppRouter(),
     isDark!,
@@ -41,16 +39,21 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (BuildContext context) => BottomNavBarCubit()),
         BlocProvider(
-            create: (BuildContext context) =>
-                NewsCubit(Repositry(ApiServices()))
-                  ..getAllArticles()
-                  ..getAllSportArticles()
-                  ..getAllScienceArticles()),
+          create: (BuildContext context) => NewsCubit(
+            Repositry(
+              ApiServices(),
+            ),
+          ),
+        ),
         BlocProvider(
             create: (BuildContext context) =>
                 DarkModeCubit()..changeMode(fromShared: isDark)),
         BlocProvider(
-          create: (context) => SearchCubit(Repositry(ApiServices())),
+          create: (context) => SearchCubit(
+            Repositry(
+              ApiServices(),
+            ),
+          ),
           child: const SerchWidget(),
         )
       ],

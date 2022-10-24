@@ -23,9 +23,12 @@ class AppRouter {
       case scienceScreen:
         return MaterialPageRoute(builder: (_) => const ScienceScreen());
       case businessScreen:
-        return MaterialPageRoute(builder: (_) => const BusinessScreen());
+        return MaterialPageRoute(builder: (_) => BusinessScreen());
       case settingsScreen:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
+      // case articleDetailScreen:
+      //   return MaterialPageRoute(
+      //       builder: (_) => ArticleDetailScreen(url: '',));
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(

@@ -3,10 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubits/news_cubit/news_state.dart';
 
 import '../../../cubits/news_cubit/news_cubit.dart';
+import '../../../models/news_models.dart';
 import '../../widgets/widget.dart';
 
 class BusinessScreen extends StatefulWidget {
-  const BusinessScreen({Key? key}) : super(key: key);
+  Articles articles = Articles();
+
+  BusinessScreen({Key? key}) : super(key: key);
 
   @override
   State<BusinessScreen> createState() => _BusinessScreenState();
@@ -15,7 +18,7 @@ class BusinessScreen extends StatefulWidget {
 class _BusinessScreenState extends State<BusinessScreen> {
   @override
   void initState() {
-    //BlocProvider.of<NewsCubit>(context).getAllArticles();
+    BlocProvider.of<NewsCubit>(context).getAllArticles();
     super.initState();
   }
 
@@ -41,7 +44,7 @@ class _BusinessScreenState extends State<BusinessScreen> {
                         )),
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,14 +60,15 @@ class _BusinessScreenState extends State<BusinessScreen> {
                 ),
               ),
               SizedBox(
-                height: 150,
+                height: 270,
                 child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: cubit.articlesList.length,
-                    itemBuilder: (context, index) => BreakingNews(
-                          articles: cubit.articlesList[index],
-                        )),
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: cubit.articlesList.length,
+                  itemBuilder: (context, index) => BreakingNews(
+                    articles: cubit.articlesList[index],
+                  ),
+                ),
               ),
             ],
           );

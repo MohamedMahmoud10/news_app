@@ -24,7 +24,7 @@ class BottomNavBarCubit extends Cubit<BottomNavBarStates> {
         icon: Icon(Icons.settings), label: 'Settings'),
   ];
   List<Widget> screens = [
-    const BusinessScreen(),
+    BusinessScreen(),
     const SportsScreen(),
     const ScienceScreen(),
     const SettingsScreen(),

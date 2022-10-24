@@ -16,7 +16,7 @@ class ScienceScreen extends StatefulWidget {
 class _ScienceScreenState extends State<ScienceScreen> {
   @override
   void initState() {
-    //BlocProvider.of<NewsCubit>(context).getAllScienceArticles();
+    BlocProvider.of<NewsCubit>(context).getAllScienceArticles();
     super.initState();
   }
 
@@ -59,7 +59,7 @@ class _ScienceScreenState extends State<ScienceScreen> {
                 ),
               ),
               SizedBox(
-                height: 150,
+                height: 270,
                 child: ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.horizontal,

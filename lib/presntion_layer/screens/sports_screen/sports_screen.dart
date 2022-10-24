@@ -16,7 +16,7 @@ class SportsScreen extends StatefulWidget {
 class _SportsScreenState extends State<SportsScreen> {
   @override
   void initState() {
-    //BlocProvider.of<NewsCubit>(context).getAllSportArticles();
+    BlocProvider.of<NewsCubit>(context).getAllSportArticles();
     super.initState();
   }
 
@@ -43,7 +43,7 @@ class _SportsScreenState extends State<SportsScreen> {
                         )),
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -59,7 +59,7 @@ class _SportsScreenState extends State<SportsScreen> {
                 ),
               ),
               SizedBox(
-                height: 150,
+                height: 270,
                 child: ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.horizontal,

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/news_models.dart';
+import 'package:news_app/presntion_layer/screens/article_detail_screen/article_detail_screen.dart';
 
 import 'custom_tag.dart';
 import 'image_container.dart';
@@ -8,6 +9,7 @@ import 'image_container.dart';
 class NewsOfTheDay extends StatelessWidget {
   const NewsOfTheDay({Key? key, required this.articles}) : super(key: key);
   final Articles articles;
+
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -15,7 +17,7 @@ class NewsOfTheDay extends StatelessWidget {
       placeholder: (context, url) => const CircularProgressIndicator(),
       imageUrl: '${articles.urlToImage}',
       imageBuilder: (context, imageProvide) => ImageContainer(
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         padding: const EdgeInsets.all(20),
         height: MediaQuery.of(context).size.height * 0.40,
         imageProvide: imageProvide,
@@ -52,7 +54,16 @@ class NewsOfTheDay extends StatelessWidget {
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ArticleDetailScreen(
+                      url: articles.url.toString(),
+                    ),
+                  ),
+                );
+              },
               child: Row(
                 children: const [
                   Text(

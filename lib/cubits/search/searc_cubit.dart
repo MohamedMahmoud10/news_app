@@ -9,17 +9,17 @@ class SearchCubit extends Cubit<SearchStates> {
   SearchCubit(this.repositry) : super(SearchInitial());
   final Repositry repositry;
   List<Articles> articlesSearchList = [];
+
   static SearchCubit get(context) => BlocProvider.of(context);
-  List<Articles> getAllSearchList(String value) {
+
+  Future<void> getAllSearchList(String value) async {
+    emit(SerachLoading());
+    articlesSearchList = [];
     try {
-      repositry.getNewsSearchData(value).then((search) {
-        emit(SearchLoadingSuccess(search));
-        articlesSearchList = search;
-      });
-      return articlesSearchList;
+      articlesSearchList = await repositry.getNewsSearchData(value);
+      emit(SearchLoadingSuccess(articlesSearchList));
     } on Exception catch (e) {
       log(e.toString());
-      return [];
     }
   }
 }

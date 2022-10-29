@@ -40,7 +40,7 @@ class Repositry {
   }
 
   Future<List<Articles>> getNewsSearchData(String value) async {
-    var result = await apiServices.getNewsData('v2/top-headlines', {
+    var result = await apiServices.getNewsData('v2/everything', {
       'q': '${value}',
       'apiKey': 'c4f871156b52488ca8244eeaeabe7160',
     });

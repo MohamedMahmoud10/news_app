@@ -4,7 +4,7 @@ import 'package:news_app/cubits/bottom_nav_bar/bottom_nav_bar_cubits.dart';
 import 'package:news_app/cubits/bottom_nav_bar/bottom_nav_bar_states.dart';
 import 'package:news_app/cubits/dark_mode/dark_mode_cubit.dart';
 
-import '../search.dart';
+import '../search_screen/search.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({Key? key}) : super(key: key);
@@ -24,12 +24,18 @@ class _LayoutScreenState extends State<LayoutScreen> {
         final cubit = BottomNavBarCubit.get(context);
         return Scaffold(
           appBar: AppBar(
+            leading: const Icon(
+              Icons.menu,
+              size: 25,
+            ),
             title: const Text('News App'),
             actions: [
               IconButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const SerchWidget()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const SearchScreen()));
                   },
                   icon: const Icon(Icons.search)),
               BlocConsumer<DarkModeCubit, DarkModeState>(

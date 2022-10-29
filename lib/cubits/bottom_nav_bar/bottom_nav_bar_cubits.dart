@@ -6,7 +6,6 @@ import '../../data_layer/api_services/api_services.dart';
 import '../../data_layer/repositry/repositry.dart';
 import '../../presntion_layer/screens/business_screen/business_screen.dart';
 import '../../presntion_layer/screens/science_screen/science_screen.dart';
-import '../../presntion_layer/screens/settings_screen/settings_screen.dart';
 import '../../presntion_layer/screens/sports_screen/sports_screen.dart';
 import '../news_cubit/news_cubit.dart';
 
@@ -20,17 +19,15 @@ class BottomNavBarCubit extends Cubit<BottomNavBarStates> {
     const BottomNavigationBarItem(
         icon: Icon(Icons.sports_soccer_rounded), label: 'Sports'),
     const BottomNavigationBarItem(icon: Icon(Icons.science), label: 'Science'),
-    const BottomNavigationBarItem(
-        icon: Icon(Icons.settings), label: 'Settings'),
   ];
   List<Widget> screens = [
     BusinessScreen(),
     const SportsScreen(),
     const ScienceScreen(),
-    const SettingsScreen(),
   ];
   void changeNavBarItems(int index) {
     curentIndex = index;
+
     if (index == 1) {
       NewsCubit(Repositry(ApiServices())).getAllSportArticles();
     }

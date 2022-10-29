@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/config/app_router.dart';
 import 'package:news_app/cubits/bottom_nav_bar/bottom_nav_bar_cubits.dart';
 import 'package:news_app/cubits/dark_mode/dark_mode_cubit.dart';
-import 'package:news_app/presntion_layer/screens/search.dart';
+import 'package:news_app/presntion_layer/screens/search_screen/search.dart';
 
 import 'config/dependency_injection.dart';
 import 'cubits/bloc_observer.dart';
@@ -23,15 +23,14 @@ void main() async {
   setup();
   runApp(MyApp(
     appRouter: AppRouter(),
-    isDark!,
   ));
 }
 
 class MyApp extends StatelessWidget {
-  bool? isDark;
+  // bool? isDark;
   final AppRouter appRouter;
 
-  MyApp(this.isDark, {super.key, required this.appRouter});
+  MyApp({super.key, required this.appRouter});
 
   @override
   Widget build(BuildContext context) {
@@ -47,14 +46,14 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (BuildContext context) =>
-                DarkModeCubit()..changeMode(fromShared: isDark)),
+                DarkModeCubit()..changeMode(fromShared: true)),
         BlocProvider(
           create: (context) => SearchCubit(
             Repositry(
               ApiServices(),
             ),
           ),
-          child: const SerchWidget(),
+          child: const SearchScreen(),
         )
       ],
       child: BlocConsumer<DarkModeCubit, DarkModeState>(

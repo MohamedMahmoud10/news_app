@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/news_models.dart';
-import 'package:news_app/presntion_layer/screens/article_detail_screen/article_detail_screen.dart';
 
+import '../screens/wep_view_screen/wep_view_screen.dart';
 import 'custom_tag.dart';
 import 'image_container.dart';
 
@@ -58,7 +58,7 @@ class NewsOfTheDay extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => ArticleDetailScreen(
+                    builder: (_) => WepViewScreen(
                       url: articles.url.toString(),
                     ),
                   ),

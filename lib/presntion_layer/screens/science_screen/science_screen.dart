@@ -33,7 +33,7 @@ class _ScienceScreenState extends State<ScienceScreen> {
           return Column(
             children: [
               SizedBox(
-                height: 340,
+                height: MediaQuery.of(context).size.height * 0.4,
                 child: ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.horizontal,
@@ -59,7 +59,7 @@ class _ScienceScreenState extends State<ScienceScreen> {
                 ),
               ),
               SizedBox(
-                height: 270,
+                height: MediaQuery.of(context).size.height * 0.34,
                 child: ListView.builder(
                     padding: EdgeInsets.zero,
                     scrollDirection: Axis.horizontal,

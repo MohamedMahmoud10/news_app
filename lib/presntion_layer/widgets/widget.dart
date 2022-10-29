@@ -5,7 +5,7 @@ import 'package:news_app/cubits/news_cubit/news_cubit.dart';
 import 'package:news_app/models/news_models.dart';
 
 import '../../cubits/news_cubit/news_state.dart';
-import '../screens/article_detail_screen/article_detail_screen.dart';
+import '../screens/wep_view_screen/wep_view_screen.dart';
 import 'image_container.dart';
 import 'news_of_the_day.dart';
 
@@ -48,7 +48,7 @@ class BreakingNews extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ArticleDetailScreen(
+            builder: (context) => WepViewScreen(
               url: articles.url.toString(),
             ),
           ),

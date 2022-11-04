@@ -6,12 +6,18 @@ class ThemeToggle {
     sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  static Future<bool> setBool(
-      {required String key, required bool value}) async {
+  static dynamic getData({required String key}) {
+    return sharedPreferences.get(key);
+  }
+
+  static Future<bool> putBoolean({
+    required String key,
+    required bool value,
+  }) async {
     return await sharedPreferences.setBool(key, value);
   }
 
-  static getBool({required String key}) {
+  static dynamic getBool({required String key}) {
     return sharedPreferences.getBool(key);
   }
 }

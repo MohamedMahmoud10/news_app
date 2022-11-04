@@ -6,17 +6,19 @@ part 'dark_mode_state.dart';
 
 class DarkModeCubit extends Cubit<DarkModeState> {
   DarkModeCubit() : super(DarkModeInitial());
-  bool isDark = false;
 
   static DarkModeCubit get(context) => BlocProvider.of(context);
 
-  void changeMode({bool? fromShared}) {
+  bool isDarkMode = false;
+
+  void changeAppMode({bool? fromShared}) {
     if (fromShared != null) {
-      isDark = fromShared;
+      isDarkMode = fromShared;
       emit(DarkModeSuccessState());
     } else {
-      ThemeToggle.setBool(key: 'isDark', value: isDark).then((value) {
-        isDark = !isDark;
+      isDarkMode = !isDarkMode;
+      ThemeToggle.putBoolean(key: 'isDarkMode', value: isDarkMode)
+          .then((value) {
         emit(DarkModeSuccessState());
       });
     }

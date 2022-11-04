@@ -25,18 +25,18 @@ class _SearchScreenState extends State<SearchScreen> {
       controller: searchController,
       style: TextStyle(
         fontSize: 20,
-        color: BlocProvider.of<DarkModeCubit>(context).isDark
+        color: BlocProvider.of<DarkModeCubit>(context).isDarkMode
             ? Colors.black
             : Colors.white,
       ),
-      cursorColor: BlocProvider.of<DarkModeCubit>(context).isDark
+      cursorColor: BlocProvider.of<DarkModeCubit>(context).isDarkMode
           ? Colors.black
           : Colors.white,
       decoration: InputDecoration(
           hintText: 'Search For News...',
           hintStyle: TextStyle(
             fontSize: 18,
-            color: BlocProvider.of<DarkModeCubit>(context).isDark
+            color: BlocProvider.of<DarkModeCubit>(context).isDarkMode
                 ? Colors.black
                 : Colors.white,
           ),
@@ -107,7 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Text(
       'Home Screen',
       style: TextStyle(
-          color: BlocProvider.of<DarkModeCubit>(context).isDark
+          color: BlocProvider.of<DarkModeCubit>(context).isDarkMode
               ? Colors.black
               : Colors.white,
           fontSize: 20),
@@ -122,7 +122,7 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         leading: _isSearching
             ? BackButton(
-                color: BlocProvider.of<DarkModeCubit>(context).isDark
+                color: BlocProvider.of<DarkModeCubit>(context).isDarkMode
                     ? Colors.black
                     : Colors.white,
               )

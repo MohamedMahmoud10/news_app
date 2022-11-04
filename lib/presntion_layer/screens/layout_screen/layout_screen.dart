@@ -46,9 +46,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                   var cubit = DarkModeCubit.get(context);
                   return IconButton(
                       onPressed: () {
-                        cubit.changeMode();
+                        cubit.changeAppMode();
                       },
-                      icon: Icon(cubit.isDark
+                      icon: Icon(cubit.isDarkMode
                           ? Icons.dark_mode_outlined
                           : Icons.sunny));
                 },

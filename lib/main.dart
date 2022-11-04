@@ -17,20 +17,22 @@ import 'data_layer/theme_toggle/theme_toggle .dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ThemeToggle.init();
-  bool? isDark = ThemeToggle.getBool(key: 'isDark');
+  bool? isDark = ThemeToggle.getData(key: 'isDark');
+  print('isDark===========>$isDark');
   Bloc.observer = MyBlocObserver();
   Repositry(ApiServices());
   setup();
   runApp(MyApp(
+    isDark: isDark,
     appRouter: AppRouter(),
   ));
 }
 
 class MyApp extends StatelessWidget {
-  // bool? isDark;
+  bool? isDark;
   final AppRouter appRouter;
 
-  MyApp({super.key, required this.appRouter});
+  MyApp({super.key, required this.appRouter, required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
             create: (BuildContext context) =>
-                DarkModeCubit()..changeMode(fromShared: true)),
+                DarkModeCubit()..changeAppMode(fromShared: isDark)),
         BlocProvider(
           create: (context) => SearchCubit(
             Repositry(
@@ -139,7 +141,7 @@ class MyApp extends StatelessWidget {
                   ),
               primarySwatch: Colors.blue,
             ),
-            themeMode: cubit.isDark ? ThemeMode.light : ThemeMode.dark,
+            themeMode: cubit.isDarkMode ? ThemeMode.light : ThemeMode.dark,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: appRouter.changeRouteSettings,
           );
